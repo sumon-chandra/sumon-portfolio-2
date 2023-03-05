@@ -26,6 +26,24 @@ const Hero = () => {
       </div>
       {/* *************** Hero Computer Section ************** */}
       <ComputersCanvas />
+      {/* ************ Section toggle button *********** */}
+      <div className="absolute bottom-8 w-full flex justify-center">
+        <a href="#about">
+          <div className="w-[35px] h-[64px] flex justify-center items-start p-2 border-4 border-secondary rounded-3xl">
+            <motion.dav
+              animate={{
+                y: [0, 24, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+              className="w-3 h-3 rounded-full bg-secondary mb-1"
+            />
+          </div>
+        </a>
+      </div>
     </section>
   );
 };
