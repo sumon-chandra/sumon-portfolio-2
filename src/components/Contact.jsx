@@ -16,9 +16,49 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // Template: template_o44qy99
+    // Service ID: service_7x7npva
+    // Public Key: user_E4YQZfabUbW66EvBPNHds
+
+    emailjs
+      .send(
+        "service_7x7npva",
+        "template_o44qy99",
+        {
+          from_name: form.name,
+          to_name: "Sumon Chandra",
+          form_email: form.email,
+          to_email: "topu199041@gmail.com",
+          message: form.message,
+        },
+        "user_E4YQZfabUbW66EvBPNHds"
+      )
+      .then(
+        () => {
+          setLoading(false),
+            alert("Thank you! I will get back to you as soon as possible.🚀");
+          setForm({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        (err) => {
+          setLoading(false);
+          console.log(err);
+          alert("Something went wrong!😥");
+        }
+      );
+  };
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
